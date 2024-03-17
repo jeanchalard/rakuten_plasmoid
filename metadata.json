@@ -1,0 +1,21 @@
+{
+    "KPackageStructure" : "Plasma/Applet",
+    "X-Plasma-API" : "declarativeappletscript",
+    "KPlugin" : {
+        "Authors" : [
+            {
+                "Email" : "jean.chalard@gmail.com",
+                "Name" : "J"
+            }
+        ],
+        "Category" : "Online services",
+        "Description" : "Rakuten value",
+        "Icon" : "view-media-chart",
+        "Id" : "com.j.plasmoid.rakuten",
+        "License" : "LGPLv3+",
+        "Name" : "Rakuten value",
+        "Name[fr]" : "Valeur Rakuten",
+        "Name[ja]" : "楽天残高",
+        "Version" : "1.0"
+    }
+}
