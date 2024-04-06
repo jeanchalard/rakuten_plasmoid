@@ -160,6 +160,18 @@ ColumnLayout {
     running : true
     repeat : true
     onTriggered : {
+      const now = new Date()
+      console.log(now)
+      const day_of_week = now.getDay()
+      if (day_of_week < 1 || day_of_week > 5) {
+        console.log("Wrong day " + day_of_week)
+        return
+      }
+      const hour = now.getHours()
+      if (hour < 8 || hour > 17) {
+        console.log("Wrong hour " + hour)
+        return
+      }
       loginCommand.run();
     }
   }
