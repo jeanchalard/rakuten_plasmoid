@@ -11,7 +11,7 @@
         "Category" : "Online services",
         "Description" : "Rakuten value",
         "Icon" : "view-media-chart",
-        "Id" : "com.j.plasmoid.rakuten",
+        "Id" : "org.j.plasmoid.rakuten",
         "License" : "LGPLv3+",
         "Name" : "Rakuten value",
         "Name[fr]" : "Valeur Rakuten",

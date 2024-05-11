@@ -4,10 +4,11 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.plasmoid 2.0
 
-ColumnLayout {
+Rectangle {
   id : root
   anchors.fill : parent
   Plasmoid.preferredRepresentation : Plasmoid.fullRepresentation
+  color : "transparent"
   Layout.minimumWidth : Math.max(amount.implicitWidth, plusvalue.implicitWidth)
 
   readonly property string login : plasmoid.configuration.login
@@ -16,12 +17,16 @@ ColumnLayout {
   onLoginChanged : start()
   onPasswordChanged : start()
   onUpdateIntervalChanged : start()
+  MouseArea {
+    anchors.fill : parent
+    onClicked : start()
+  }
 
   property var credentials : {}
   property var loaded : false
 
-  // Ideally this would be done in javascript but somebody decided that getting cookies in Javascript is somehow a "security risk"
-  // and the cookies are therefore the one redacted cookie. This is utter crap, so use wget which doesn't have stupid arbitrary and senseless limitations
+  // Ideally this would be done in javascript but somebody decided that getting cookies in Javascript (the LANGUAGE, not just when it runs in a browser) is somehow a "security risk"
+  // and the cookies are therefore the one redacted header. This is idiotic but there doesn't seem to be a away to have it work, so use wget which doesn't have stupid arbitrary and senseless limitations
   PlasmaCore.DataSource {
     id : loginCommand
     engine : "executable"
@@ -137,22 +142,25 @@ ColumnLayout {
     start();
   }
 
-  PlasmaComponents.Label {
-    id : amount
-    Layout.alignment : Qt.AlignHCenter
+  ColumnLayout {
+    anchors.fill : parent
+    PlasmaComponents.Label {
+      id : amount
+      Layout.alignment : Qt.AlignHCenter | Qt.AlignTop
 
-    font.bold : true
-    font.pointSize : 10
-    text : ""
-  }
-  PlasmaComponents.Label {
-    id : plusvalue
-    width : root.width
-    Layout.alignment : Qt.AlignRight
+      font.bold : true
+      font.pointSize : 10
+      text : ""
+    }
+    PlasmaComponents.Label {
+      id : plusvalue
+      width : root.width
+      Layout.alignment : Qt.AlignRight
 
-    font.pointSize : 8
-    color : "#ff0000"
-    text : ""
+      font.pointSize : 8
+      color : "#ff0000"
+      text : ""
+    }
   }
 
   Timer {
