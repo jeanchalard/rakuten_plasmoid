@@ -38,6 +38,7 @@ Rectangle {
     }
     signal exited(string value)
     function run() {
+      loading.visible = true
       connectSource("wget --quiet -O - -S --post-data='loginid=" + login + "&passwd=" + encodeURIComponent(password) + "&memberPath=' 'https://member.rakuten-sec.co.jp/app/Login.do' 2>&1")
     }
   }
@@ -117,12 +118,14 @@ Rectangle {
 
   function displayData(av, pv) {
     loaded = true;
+    loading.visible = false;
     amount.text = av;
     plusvalue.text = pv;
   }
 
   function displayLoginError() {
     loaded = false;
+    loading.visible = false;
     amount.text = "Log in error";
     plusvalue.text = "";
   }
@@ -161,6 +164,12 @@ Rectangle {
       color : "#ff0000"
       text : ""
     }
+  }
+
+  PlasmaComponents.BusyIndicator {
+    id : loading
+    anchors.fill : parent
+    visible : false
   }
 
   Timer {
