@@ -3,8 +3,13 @@ import org.kde.plasma.configuration 2.0
 
 ConfigModel {
     ConfigCategory {
-         name : i18n("General")
+         name : i18n("Modules")
          icon : "configure"
-         source : "ConfigGeneral.qml"
+         source : "ConfigModules.qml"
+    }
+    ConfigCategory {
+         name : i18n("Updating")
+         icon : "backup"
+         source : "ConfigUpdates.qml"
     }
 }

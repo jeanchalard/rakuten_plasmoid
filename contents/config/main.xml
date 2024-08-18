@@ -5,14 +5,18 @@
     <kcfgfile name=""/>
 
     <group name="General">
-        <entry name="login" type="String">
-            <default></default>
-        </entry>
-        <entry name="password" type="String">
-            <default></default>
-        </entry>
-        <entry name="updateInterval" type="Int">
-            <default>300.0</default>
-        </entry>
+      <entry name="spec" type="String">
+<default>{"modules":[{"module":"rakuten_shoken","models":[{"name":"rakuten_shoken/Model.qml","configuration":{"login":"","password":""}}],"views":[{"name":"rakuten_shoken/ViewShoken.qml","configuration":""},{"name":"rakuten_shoken/ViewCash.qml","configuration":""}]},{"module":"mitsubishi","models":[{"name":"mitsubishi/Model.qml","configuration":{"factors":"2","tenban":"","kouzabango":"","gokeiyakubango":"","password":""}}],"views":[{"name":"mitsubishi/View.qml","configuration":""}]}]}
+</default>
+
+      </entry>
+      <entry name="updateIntervalVisible" type="Int">
+        <!-- minutes -->
+        <default>5</default>
+      </entry>
+      <entry name="updateIntervalHidden" type="Int">
+        <!-- minutes -->
+        <default>360</default>
+      </entry>
     </group>
 </kcfg>
