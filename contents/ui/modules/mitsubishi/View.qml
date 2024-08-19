@@ -16,7 +16,6 @@ Item {
   // This seems necessary because on<Property>Changed is readonly AND cannot be
   // connect()ed to so it needs another property for no good reason
   property var urgencyChangedHandler : null
-  onUrgencyChanged : { if (urgencyChangedHandler) urgencyChangedHandler() }
 
   MouseArea {
     anchors.fill : parent
@@ -28,7 +27,7 @@ Item {
   Row {
     id : contents
     anchors.verticalCenter : top.verticalCenter
-    spacing : top.parent.margin
+    spacing : 10
     width : icon.width + amountLabel.width + spacing
     height : amountLabel.height
 
@@ -73,6 +72,7 @@ Item {
         urgency = 1
       else
         urgency = 0
+      if (urgencyChangedHandler) urgencyChangedHandler()
     }
   }
 

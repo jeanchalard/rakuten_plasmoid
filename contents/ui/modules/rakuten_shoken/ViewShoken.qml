@@ -24,7 +24,7 @@ Item {
   Row {
     id : contents
     anchors.verticalCenter : top.verticalCenter
-    spacing : top.parent.margin
+    spacing : 10
     width : icon.width + amountLabel.width + spacing
     height : col.height
 

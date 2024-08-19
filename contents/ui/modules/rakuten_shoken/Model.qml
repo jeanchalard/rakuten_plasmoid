@@ -97,16 +97,15 @@ PlasmaCore.DataSource {
       fetchState = Model.FetchState.LoggingIn
       return logIn()
     }
-
-    exec("wget --quiet -O - --header=\"Cookie: checkTk=" + cookie + "\" \"https://member.rakuten-sec.co.jp/app/async_change_home_balance_lst.do;" + session + "?openCode=1\"");
+    var cmd = "wget --quiet -O - --header=\"Cookie: checkTk=" + cookie + "\" \"https://member.rakuten-sec.co.jp/app/async_change_home_balance_lst.do;" + session + "?openCode=1\" --header=\"Cookie: checkTk=" + cookie + "\" \"https://member.rakuten-sec.co.jp/app/home_async_power_info.do;" + session + "\""
+    exec(cmd);
   }
 
   function parseFetchedData(data) {
     try {
       var value = (/<p id="asset_total_amount"[^>]*>([^<]*)</gm).exec(data)[1]
       var pvalue = (/<p id="asset_total_amount_diff"[^>]*>([^<]*)</gm).exec(data)[1]
-      // Use [\S\s] as a hack because . doesn't match new lines. Unless the 's' flag is given but that's evidently not supported in qml 🤯
-      var cvalue = (/pcmm-m1-home-assets-section--money-bridge"[\S\s]*?<span class="pcmm-m1-home-assets-table__amount"[^>]*>([^<]*)</gm).exec(data)[1]
+      var cvalue = (/<div id="power_total_amount"[^>]*>([^<]*)</gm).exec(data)[1]
       if (!value || !pvalue || !cvalue) return null
       value = value.trim().replace(/\D/g, '')
       pvalue = pvalue.trim().replace(/\D/g, '')

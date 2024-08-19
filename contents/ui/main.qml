@@ -91,7 +91,7 @@ Rectangle {
       id : zandakaMain
       width : childrenRect.width
       height : parent.height
-      readonly property int margin : 10
+      readonly property int margin : 5
     }
 
     // MouseArea to detect clicks on the compact widget. When clicked, the widget expands
